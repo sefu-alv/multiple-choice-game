@@ -5,44 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <header>
-      <div class="highscore"></div>
-      <div class="time">time:</div>
-    </header>
-    <h1>CODING GAME</h1>
-    <div class="container">
-    
-    <div class="square">
-        <div class="questions" id="q"></div>
-        <ul>
-            <li>
-              <button name="answer" id="a-option" class="answer" >
-            </li>
-            <li>
-              <button name="answer" id="b-option" class="answer" >
-            </li>
-            <li>
-              <button name="answer" id="c-option" class="answer" >
-             
-            </li>
-            <li>
-              <button ame="answer" id="d-option" class="answer" >
-            </li>
-          </ul>
-          </div>
-
-    </div>
-    <div class="controls">
-    <button id="start-btn"></button>
-    <button id="next-btn"></button>
-    </div>
-
+    <div class="start-screen">
       
+      <div class="controls">
+        <button id="start-btn">Start</button>
+      </div>
     </div>
 
-  
+    <div class="main-screen" style="display: none;">
+      <header>
+        <div class="highscore"></div>
+        <div class="time">Time:</div>
+      </header>
+      <div class="game-title">
+        <h1>CODING GAME</h1>
+      </div>
+      <div class="container">
+        <div class="main-section">
+          <div class="questions" id="q"></div>
+          <div class="options">
+            <ul>
+              <li>
+                <button name="answer" id="a-option" class="answer"></button>
+              </li>
+              <li>
+                <button name="answer" id="b-option" class="answer"></button>
+              </li>
+              <li>
+                <button name="answer" id="c-option" class="answer"></button>
+              </li>
+              <li>
+                <button name="answer" id="d-option" class="answer"></button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="next-btn-container">
+          <button id="next-btn"><h1>Next</h1></button>
+        </div>
+      </div>
+    </div>
 
     <script src="assets/script/script.js"></script>
   </body>
