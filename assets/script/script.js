@@ -1,17 +1,13 @@
 // -----------------variables----------------------
 var startBtn = document.getElementById("start-btn");
 var mainScreen = document.getElementById("main-screen");
-// intro to the quiz
 var textEl = document.getElementById("intro-text");
-var text =
-  "Welcome to the Quiz Realm! Test your coding knowledge as you tackle a series of questions. Each question offers multiple choices: A, B, C, or D. Choose wisely, as wrong answers chip away at your timer. Can you beat the clock and stay in the game? Step up and prove your knowledge skills in the Quiz Realm!";
 var titleText = document.getElementById("title");
 var index = 0;
-// checks if words are still being typed
 var stilltyping = true;
-// this function types out the text at a certain rate
 var speed = 0;
-// questions that will be asked in the game
+var text =
+  "Welcome to the Quiz Realm! Test your coding knowledge as you tackle a series of questions. Each question offers multiple choices: A, B, C, or D. Choose wisely, as wrong answers chip away at your timer. Can you beat the clock and stay in the game? Step up and prove your knowledge skills in the Quiz Realm!";
 var askingQuestions = [
   {
     question:
@@ -84,6 +80,9 @@ var cOption = document.getElementById("c-option");
 var dOption = document.getElementById("d-option");
 var questionIndex = 0;
 var optionIndex = 0;
+var timerEl= document.getElementById('timer');
+var time;
+var timeLeft=60;
 // -----------------functions----------------------
 //setting index set to -1 so no questions are displayed
 function typingText(text, element, index, callback, speed) {
@@ -110,7 +109,7 @@ startBtn.addEventListener("click", function () {
   }
   askQuestion();
 });
-
+// shows the questions
 function askQuestion() {
   // Reset question element
   questionElement.textContent = "";
@@ -124,18 +123,14 @@ function askQuestion() {
 
   // Pull up the most current question
   var currentQuestion = askingQuestions[questionIndex];
-  typingText(
-    currentQuestion.question,
-    questionElement,
-    0,
-    function () {
+  typingText( currentQuestion.question,questionElement,0,function () {
       // After typing the question, display the options
       showingOptions();
     },
-    50
+    5
   );
 }
-
+// shows the options 
 function showingOptions() {
   var currentQuestion = askingQuestions[questionIndex];
 
@@ -155,7 +150,6 @@ function nextQuestion() {
     askQuestion(); 
   } 
 }
-// ...
 
 // Add an event listener to the options container
 optionsElement.addEventListener("click", function (event) {
@@ -164,7 +158,6 @@ optionsElement.addEventListener("click", function (event) {
     nextQuestion();
   }
 });
-
 
 // -----------------calling functions----------------------
 
