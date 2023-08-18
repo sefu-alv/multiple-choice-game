@@ -11,20 +11,24 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+   
   </head>
   <body>
+    <header>
+      <nav class="navbar" id="nav-bar">
+        
+          <div id="time">Time:</div>
+          <div id="highscore">Scores</div>
+        </div>
+      </nav>
+    </header>
     <div class="start-screen">
       <div id="intro"><p id="intro-text"></p> </div>
       <div class="controls" >
         <button id="start-btn" style="display: none;"><h1>BEGIN?</h1></button>
       </div>
     </div>
-
     <div id="main-screen" style="display: none;">
-      <header>
-        <div class="highscore"></div>
-        <div class="time">Time:</div>
-      </header>
       <div class="game-title" id="title">
         <h1>CODING GAME</h1>
       </div>
@@ -34,16 +38,16 @@
           <div id="options">
             <ul>
               <li>
-                <button name="answer" id="a-option" class="answer"></button>
+                <div name="answer" id="a-option" class="answer"></div>
               </li>
               <li>
-                <button name="answer" id="b-option" class="answer"></button>
+                <div name="answer" id="b-option" class="answer"></div>
               </li>
               <li>
-                <button name="answer" id="c-option" class="answer"></button>
+                <div name="answer" id="c-option" class="answer"></div>
               </li>
               <li>
-                <button name="answer" id="d-option" class="answer"></button>
+                <div name="answer" id="d-option" class="answer"></div>
               </li>
             </ul>
           </div>
