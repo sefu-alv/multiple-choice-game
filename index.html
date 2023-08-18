@@ -15,19 +15,22 @@
   </head>
   <body>
     <header>
+      <!----------------- nav bar ----------------------->
       <nav class="navbar" id="nav-bar">
         
           <div id="time">Time: <span id="timer">60</span> seconds</div>
-          <div id="highscore">Scores</div>
+          <div id="scores">Scores</div>
         </div>
       </nav>
     </header>
-    <div class="start-screen">
+    <!-----------------starting screen ----------------------->
+    <div id="start-screen" >
       <div id="intro"><p id="intro-text"></p> </div>
       <div class="controls" >
         <button id="start-btn" style="display: none;"><h1>BEGIN?</h1></button>
       </div>
     </div>
+    <!-----------------Main screen ----------------------->
     <div id="main-screen" style="display: none;">
       <div class="game-title" id="title">
         <h1>CODING GAME</h1>
@@ -53,7 +56,21 @@
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      <!----------------- gamer over screen----------------------->
+      <div id="game-over" style="display: none;">
+        <div id="gameOver-text">Game Over</div>
+        <div class="submit-score">
+          <div id="initials-container">
+            <input type="text" id="initials" placeholder="Enter your initials" />
+          </div>
+          <div id="submit-score">Submit Score</div>
+        </div>
+        <div id="saved-info" style="display: none;">
+          <p>Your initials: <span id="saved-initials"></span></p>
+          <p>Your score: <span id="saved-score"></span></p>
+        </div>
+      </div>
 
     <script src="assets/script/script.js"></script>
   </body>

@@ -83,7 +83,15 @@ var optionIndex = 0;
 var timerEl= document.getElementById('timer');
 var time;
 var timeLeft=60;
-
+var scoresEl= document.getElementById('scores');
+var submitScoreButton = document.getElementById("submit-score");
+var gameOverScreen = document.getElementById('game-over');
+var startScreen = document.getElementById('start-screen');
+var gameOverScreen = document.getElementById("game-over");
+var finalScoreElement = document.getElementById("final-score");
+var submitScoreButton = document.getElementById("submit-score");
+var finalScore;
+var score= document.getElementById('scores');
 // -----------------functions----------------------
 //setting index set to -1 so no questions are displayed
 function typingText(text, element, index, callback, speed) {
@@ -134,21 +142,31 @@ function nextQuestion() {
   // Check if there are more questions
   if (questionIndex < askingQuestions.length - 1) {
     askQuestion(); 
-  } 
+  } else {
+    questionIndex = 0;
+    mainScreen.style.display = "none";
+    startScreen.style.display = 'none';
+    startBtn.style.display = "block";
+    textEl.style.display = "block";
+    timerEl.style.display="none"
+    gameOverScreen.style.display = "block";
+  }
 }
 // this function starts timer
 function startTimer() {
   time = setInterval(function () {
     if (timeLeft > 0) {
       timeLeft--;
-      updateTimer(); // Call the function to update the timer display
+      updateTimer();
     } else {
       clearInterval(time);
-      console.log("Time's up!");
+    }
+    if ( timeLeft >= 0) {
+      finalScore = timeLeft * 1000;
+    
     }
   }, 1000);
 }
-
 // Function to update the timer display
 function updateTimer() {
   timerEl.textContent = timeLeft + "s";
@@ -169,6 +187,7 @@ function handleUserAnswer(answer) {
     nextQuestion();
   }
 }
+
 // ----------------event listeners-----------------------
 
 // Add an event listener to the options container
@@ -189,7 +208,24 @@ startBtn.addEventListener("click", function () {
   askQuestion();
   startTimer();
 });
-
+// this button triggers the submit button
+submitScoreButton.addEventListener("click", function () {
+  var initialsInput = document.getElementById("initials").value;
+  var savedInitialsElement = document.getElementById("saved-initials");
+  var savedScoreElement = document.getElementById("saved-score");
+  savedInitialsElement.textContent = initialsInput;
+  savedScoreElement.textContent = finalScore;
+  // Display the saved information
+  var savedInfoElement = document.getElementById("saved-info");
+  savedInfoElement.style.display = "block";
+  var initialsInput = document.getElementById("initials").value;
+});
+score.addEventListener('click',function(){
+  mainScreen.style.display = "none";
+  startScreen.style.display = 'none';
+  timerEl.style.display="none"
+  gameOverScreen.style.display = "block";
+})
 // -----------------calling functions----------------------
 
 // Typing out the introduction text
@@ -197,7 +233,7 @@ typingText(text,textEl,0, function () {
     // After typing the introduction text, show the "Start" button
     startBtn.style.display = "block";
   },
-  0
+  50
 );
 
 showingOptions();

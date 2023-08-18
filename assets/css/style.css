@@ -1,7 +1,7 @@
 /* variables for the main colors being used  */
 :root {
   --bgcolor: rgba(255, 192, 203, 0.664);
-  --border: #00a745;
+  --green: #00a745;
 }
 /* styling for the body */
 body {
@@ -24,7 +24,7 @@ body {
 #intro {
   width: 45vw;
   line-height: 2ch;
-  color: var(--border);
+  color: var(--green);
   margin-bottom: 5ch;
 }
 
@@ -43,45 +43,48 @@ body {
     #2e2830,
     #383441
   );
-  color: var(--border);
+  color: var(--green);
   font-family: "Press Start 2P", cursive;
   background-blend-mode: multiply;
 }
 
 /* styling for the container */
 nav {
-  position: fixed; 
+  position: fixed;
   display: flex;
   top: 0;
-  left: 0; 
-  width: 100%; 
+  left: 0;
+  width: 100%;
   height: 5ch;
-  
- }
- #nav-bar{
+}
+/* styling for contents of nav bar */
+#nav-bar {
   justify-content: left;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
- }
- #highscore{
+}
+/* styling for hover over scores */
+#scores:hover {
+  color: var(--green);
+  cursor: grab;
+}
+#highscore {
   margin-right: 5vw;
-
- }
- #time{
-margin-left: 5vw;
- }
+}
+#time {
+  margin-left: 5vw;
+}
+/* styling for container */
 .container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   width: 75vw;
   height: 50vh;
-
-
 }
 /* styling for the game title */
 .game-title h1 {
-  color: var(--border);
+  color: var(--green);
   text-align: center;
   font-family: "Press Start 2P", cursive;
 }
@@ -96,7 +99,7 @@ margin-left: 5vw;
   line-height: 2ch;
   margin: 25px;
   font-size: 1.5ch;
-  color: var(--border);
+  color: var(--green);
   font-family: "Press Start 2P", cursive;
 }
 /* removing the list-styles for the options  */
@@ -118,5 +121,57 @@ ul li {
 }
 /* changes styling when the answers are hovered over */
 .answer:hover {
-  color: var(--border);
+  color: var(--green);
+  cursor: grab;
+}
+/* game over screen styling  */
+#game-over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  height: 50vh;
+}
+/* styling for game over text */
+#gameOver-text {
+  justify-content: center;
+  align-items: center;
+  color: var(--green);
+  display: flex;
+  width: 100%;
+  height: 2ch;
+  font-size: 3ch;
+}
+/* styling for initials container */
+#initials-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Full width of parent container */
+  margin-bottom: 5px; /* Add some spacing between elements */
+}
+/* initials styling */
+#initials {
+  width: 15vw;
+  height: 3vh;
+}
+/* submit score styling  */
+#submit-score {
+  display: flex;
+  color: var(--green);
+  line-height: 5ch;
+  justify-content: center;
+}
+/* hover styling for the submit score div */
+#submit-score:hover {
+  cursor: grab;
+  color: #000000;
+}
+/* styling for saved info */
+#saved-info {
+  border: solid;
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
 }
