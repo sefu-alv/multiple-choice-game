@@ -83,6 +83,7 @@ var optionIndex = 0;
 var timerEl= document.getElementById('timer');
 var time;
 var timeLeft=60;
+
 // -----------------functions----------------------
 //setting index set to -1 so no questions are displayed
 function typingText(text, element, index, callback, speed) {
@@ -100,40 +101,25 @@ function typingText(text, element, index, callback, speed) {
   }
 }
 
-// start game fuctions
-startBtn.addEventListener("click", function () {
-  if (!stilltyping) {
-    mainScreen.style.display = "block";
-    startBtn.style.display = "none";
-    textEl.style.display = "none";
-  }
-  askQuestion();
-});
 // shows the questions
 function askQuestion() {
-  // Reset question element
   questionElement.textContent = "";
-
-  // Reset options and show the options container
   aOption.textContent = "";
   bOption.textContent = "";
   cOption.textContent = "";
   dOption.textContent = "";
   optionsElement.style.display = "block";
-
-  // Pull up the most current question
   var currentQuestion = askingQuestions[questionIndex];
   typingText( currentQuestion.question,questionElement,0,function () {
-      // After typing the question, display the options
       showingOptions();
     },
     5
   );
 }
+
 // shows the options 
 function showingOptions() {
   var currentQuestion = askingQuestions[questionIndex];
-
   // Display the options for the current question without typing effect
   aOption.textContent = "A. " + currentQuestion.A;
   bOption.textContent = "B. " + currentQuestion.B;
@@ -150,13 +136,58 @@ function nextQuestion() {
     askQuestion(); 
   } 
 }
+// this function starts timer
+function startTimer() {
+  time = setInterval(function () {
+    if (timeLeft > 0) {
+      timeLeft--;
+      updateTimer(); // Call the function to update the timer display
+    } else {
+      clearInterval(time);
+      console.log("Time's up!");
+    }
+  }, 1000);
+}
+
+// Function to update the timer display
+function updateTimer() {
+  timerEl.textContent = timeLeft + "s";
+}
+
+
+// Call this function when an answer is submitted
+function handleUserAnswer(answer) {
+  var currentQuestion = askingQuestions[questionIndex];
+  if (answer === currentQuestion.answer) {
+    nextQuestion();
+  } else {
+    timeLeft -= 5; 
+    if (timeLeft < 0) {
+      timeLeft = 0;
+    }
+    updateTimer();
+    nextQuestion();
+  }
+}
+// ----------------event listeners-----------------------
 
 // Add an event listener to the options container
 optionsElement.addEventListener("click", function (event) {
   var selectedOption = event.target;
   if (selectedOption.classList.contains("answer")) {
-    nextQuestion();
+    handleUserAnswer(selectedOption.id);
   }
+})
+
+// start game fuctions
+startBtn.addEventListener("click", function () {
+  if (!stilltyping) {
+    mainScreen.style.display = "block";
+    startBtn.style.display = "none";
+    textEl.style.display = "none";
+  }
+  askQuestion();
+  startTimer();
 });
 
 // -----------------calling functions----------------------
@@ -168,6 +199,5 @@ typingText(text,textEl,0, function () {
   },
   0
 );
-
 
 showingOptions();
